@@ -1,0 +1,112 @@
+{
+  "layout": {
+    "brand": "YourMellier"
+  },
+  "preview": {
+    "label": "Vista previa de la interfaz de la Web App"
+  },
+  "hero": {
+    "title": "¡Bienvenido a YourMellier!",
+    "p1": "Este es un proyecto personal para experimentar con nuevas herramientas y tecnologías con las que he creado un sommelier virtual.",
+    "p2": "Gracias de corazón por tu disponibilidad: tu ayuda es invaluable para poner a prueba este experimento. Al tratarse aún de una fase de prueba «a puerta cerrada», te pido la máxima confidencialidad sobre todo lo que veas en el interior.",
+    "p3": "¡Gracias por formar parte de este experimento!",
+    "watch_video": "Ver el vídeo"
+  },
+  "cta": {
+    "open_app": "🚀 Abrir la web app"
+  },
+  "video": {
+    "title": "Vídeo tutorial"
+  },
+  "survey": {
+    "title": "Cuestionario",
+    "intro": "Responde a las siguientes preguntas.",
+    "q1": {
+      "label": "¿Te resultaría útil esta app?",
+      "yes": "Sí",
+      "no": "No"
+    },
+    "q2": {
+      "label": "¿Cómo preferirías usarla?",
+      "placeholder": "Selecciona una opción",
+      "web": "Web",
+      "mobile": "Móvil",
+      "both": "Ambas",
+      "none": "Ninguna"
+    },
+    "q3": {
+      "ui": {
+        "legend": "Interfaz de usuario",
+        "navigation": "Navegación y menús",
+        "visual_hierarchy": "Jerarquía visual de la información",
+        "typography": "Tipografía y legibilidad",
+        "colors": "Color y contraste"
+      },
+      "ux": {
+        "legend": "Experiencia de usuario",
+        "speed": "Velocidad y capacidad de respuesta",
+        "clarity": "Claridad de los flujos",
+        "onboarding": "Onboarding e instrucciones",
+        "search": "Búsqueda y filtros"
+      },
+      "func": {
+        "legend": "Funcionalidades",
+        "comparison": "Comparación de precios",
+        "filters": "Filtros avanzados",
+        "alerts": "Alertas y notificaciones",
+        "history": "Historial y favoritos"
+      },
+      "data": {
+        "legend": "Calidad de los datos",
+        "prices": "Completitud de precios",
+        "accuracy": "Exactitud de la información",
+        "coverage": "Cobertura de tiendas / regiones",
+        "updates": "Actualización de datos"
+      }
+    },
+    "q4": {
+      "label": "¿Otras sugerencias?",
+      "placeholder": "Escribe aquí (máx. 2000 caracteres)"
+    },
+    "submit": "Enviar",
+    "submitting": "Enviando…",
+    "success": "¡Gracias! El cuestionario se ha enviado.",
+    "error": "No se pudo enviar. Inténtalo más tarde.",
+    "validation": {
+      "useful": "Selecciona una respuesta.",
+      "usage": "Selecciona cómo preferirías usar la app.",
+      "other": "El texto es demasiado largo."
+    }
+  },
+  "suggestions": {
+    "title": "Sugerencias",
+    "intro": "Informa de errores, ideas o mejoras. Los campos opcionales nos ayudan a responderte.",
+    "name": "Nombre (opcional)",
+    "email": "Correo (opcional)",
+    "category": "Categoría",
+    "categoryPlaceholder": "Seleccionar",
+    "categories": {
+      "bug": "Bug",
+      "feature": "Funcionalidad",
+      "improvement": "Mejora",
+      "other": "Otro"
+    },
+    "message": "Sugerencia",
+    "messagePlaceholder": "Describe tu sugerencia (máx. 2000 caracteres)",
+    "submit": "Enviar sugerencia",
+    "submitting": "Enviando…",
+    "success": "¡Gracias! La sugerencia se ha enviado.",
+    "error": "No se pudo enviar. Inténtalo más tarde.",
+    "validation": {
+      "category": "Selecciona una categoría.",
+      "message": "El mensaje es obligatorio.",
+      "email": "Correo no válido.",
+      "length": "Texto demasiado largo."
+    }
+  },
+  "cookies": {
+    "message": "Este sitio usa cookies esenciales para la autenticación. Sin seguimiento publicitario.",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
+  }
+}

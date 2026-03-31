@@ -1,0 +1,112 @@
+{
+  "layout": {
+    "brand": "YourMellier"
+  },
+  "preview": {
+    "label": "Web app interface preview"
+  },
+  "hero": {
+    "title": "Welcome to YourMellier!",
+    "p1": "This is a personal project built to experiment with new tools and technologies—and to create a virtual sommelier.",
+    "p2": "Thank you sincerely for taking part: your help is invaluable in testing this experiment. Because this is still a “closed doors” beta, please keep strict confidentiality about everything you see inside.",
+    "p3": "Thank you for being part of this experiment!",
+    "watch_video": "Watch the video"
+  },
+  "cta": {
+    "open_app": "🚀 Open web app"
+  },
+  "video": {
+    "title": "Video tutorial"
+  },
+  "survey": {
+    "title": "Survey",
+    "intro": "Please answer the following questions.",
+    "q1": {
+      "label": "Would this app be useful to you?",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "q2": {
+      "label": "How would you prefer to use it?",
+      "placeholder": "Select an option",
+      "web": "Web",
+      "mobile": "Mobile",
+      "both": "Both",
+      "none": "None"
+    },
+    "q3": {
+      "ui": {
+        "legend": "User interface",
+        "navigation": "Navigation and menus",
+        "visual_hierarchy": "Visual hierarchy of information",
+        "typography": "Typography and readability",
+        "colors": "Colors and contrast"
+      },
+      "ux": {
+        "legend": "User experience",
+        "speed": "Speed and responsiveness",
+        "clarity": "Clarity of flows",
+        "onboarding": "Onboarding and guidance",
+        "search": "Search and filters"
+      },
+      "func": {
+        "legend": "Features",
+        "comparison": "Price comparison",
+        "filters": "Advanced filters",
+        "alerts": "Alerts and notifications",
+        "history": "History and favorites"
+      },
+      "data": {
+        "legend": "Data quality",
+        "prices": "Price completeness",
+        "accuracy": "Information accuracy",
+        "coverage": "Store / region coverage",
+        "updates": "Data freshness"
+      }
+    },
+    "q4": {
+      "label": "Any other suggestions?",
+      "placeholder": "Write here (max 2000 characters)"
+    },
+    "submit": "Submit",
+    "submitting": "Sending…",
+    "success": "Thank you! Your survey was submitted.",
+    "error": "Could not submit. Please try again later.",
+    "validation": {
+      "useful": "Please select an answer.",
+      "usage": "Please select how you would prefer to use the app.",
+      "other": "Suggestion is too long."
+    }
+  },
+  "suggestions": {
+    "title": "Suggestions",
+    "intro": "Report bugs, ideas, or improvements. Optional fields help us get back to you.",
+    "name": "Name (optional)",
+    "email": "Email (optional)",
+    "category": "Category",
+    "categoryPlaceholder": "Select",
+    "categories": {
+      "bug": "Bug",
+      "feature": "Feature",
+      "improvement": "Improvement",
+      "other": "Other"
+    },
+    "message": "Suggestion",
+    "messagePlaceholder": "Describe your suggestion (max 2000 characters)",
+    "submit": "Send suggestion",
+    "submitting": "Sending…",
+    "success": "Thank you! Your suggestion was sent.",
+    "error": "Could not submit. Please try again later.",
+    "validation": {
+      "category": "Please select a category.",
+      "message": "Message is required.",
+      "email": "Invalid email address.",
+      "length": "Text is too long."
+    }
+  },
+  "cookies": {
+    "message": "This site uses essential cookies for authentication. No tracking.",
+    "accept": "Accept",
+    "reject": "Decline"
+  }
+}
