@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { isBetaAuthenticated } from '../../lib/betaAuth'
 
 type ProtectedRouteProps = {
@@ -14,4 +14,15 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   }
 
   return <>{children}</>
+}
+
+/** Area `/beta/*`: autenticazione beta + `<Outlet />` per sotto-route. */
+export function BetaProtectedOutlet() {
+  const location = useLocation()
+
+  if (!isBetaAuthenticated()) {
+    return <Navigate to="/" replace state={{ from: location }} />
+  }
+
+  return <Outlet />
 }

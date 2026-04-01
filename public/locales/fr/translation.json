@@ -1,81 +1,171 @@
 {
   "layout": {
-    "brand": "YourMellier"
+    "brand": "YourMelier",
+    "languageSwitcher": "Langue",
+    "logout": "Déconnexion"
   },
   "preview": {
-    "label": "Aperçu de l’interface Web App"
+    "label": "Aperçu de l’interface Web App",
+    "specs": "(ratio 9:16) · largeur 375px",
+    "fileName": "demo.mp4"
   },
   "hero": {
-    "title": "Bienvenue sur YourMellier !",
+    "title": "Bienvenue sur YourMelier !",
     "p1": "Il s’agit d’un projet personnel pour expérimenter de nouveaux outils et technologies, avec lesquels j’ai réalisé un sommelier virtuel.",
     "p2": "Merci du fond du cœur pour votre participation : votre aide est précieuse pour tester cette expérience. Comme il s’agit encore d’une phase bêta « à huis clos », je vous demande la plus stricte confidentialité sur tout ce que vous verrez à l’intérieur.",
     "p3": "Merci de faire partie de cette expérience !",
     "watch_video": "Voir la vidéo"
   },
   "cta": {
-    "open_app": "🚀 Ouvrir l’app web"
+    "open_app": "🚀 Ouvrir l’app web",
+    "survey": "📋 Remplir le\nquestionnaire"
+  },
+  "landing": {
+    "betaTitle": "🍷 YourMelier Beta",
+    "welcome": "Bienvenue sur YourMelier !",
+    "bodyP1": "Il s’agit d’un projet personnel pour expérimenter de nouveaux outils et technologies, avec lesquels j’ai réalisé un sommelier virtuel.",
+    "bodyP2": "Merci du fond du cœur pour votre participation : votre aide est précieuse pour tester cette expérience. Comme il s’agit encore d’une phase bêta « à huis clos », je vous demande la plus stricte confidentialité sur tout ce que vous verrez à l’intérieur.",
+    "bodyP3": "Merci de faire partie de cette expérience !",
+    "surveyHint": "En remplissant ce court questionnaire après avoir essayé l’app, vous m’aidez à l’améliorer concrètement. Il demande moins de 2 minutes—merci pour votre disponibilité !",
+    "quickSuggestionTitle": "💬 Suggestion rapide (facultatif)",
+    "quickSuggestionSubmit": "Envoyer"
+  },
+  "surveyPage": {
+    "back": "Retour à l’accueil",
+    "pageTitle": "Questionnaire bêta YourMelier",
+    "intro": "Ce questionnaire est anonyme pour que vous puissiez être totalement honnête dans vos évaluations. Et vous pourrez continuer à me dire combien vous avez apprécié cette expérience 😄",
+    "progressLabel": "Progression",
+    "progressAria": "{{answered}} sur {{total}} questions répondues ({{percent}} %)"
   },
   "video": {
-    "title": "Tutoriel vidéo"
+    "title": "Tutoriel vidéo",
+    "sectionTitle": "📱 Vidéo"
   },
   "survey": {
     "title": "Questionnaire",
-    "intro": "Merci de répondre aux questions suivantes.",
-    "q1": {
-      "label": "Cette application vous serait-elle utile ?",
-      "yes": "Oui",
-      "no": "Non"
-    },
-    "q2": {
-      "label": "Comment préféreriez-vous l’utiliser ?",
-      "placeholder": "Sélectionnez une option",
-      "web": "Web",
-      "mobile": "Mobile",
-      "both": "Les deux",
-      "none": "Aucune"
-    },
-    "q3": {
-      "ui": {
-        "legend": "Interface utilisateur",
-        "navigation": "Navigation et menus",
-        "visual_hierarchy": "Hiérarchie visuelle des informations",
-        "typography": "Typographie et lisibilité",
-        "colors": "Couleurs et contraste"
-      },
-      "ux": {
-        "legend": "Expérience utilisateur",
-        "speed": "Rapidité et réactivité",
-        "clarity": "Clarté des parcours",
-        "onboarding": "Onboarding et consignes",
-        "search": "Recherche et filtres"
-      },
-      "func": {
-        "legend": "Fonctionnalités",
-        "comparison": "Comparaison des prix",
-        "filters": "Filtres avancés",
-        "alerts": "Alertes et notifications",
-        "history": "Historique et favoris"
-      },
-      "data": {
-        "legend": "Qualité des données",
-        "prices": "Exhaustivité des prix",
-        "accuracy": "Exactitude des informations",
-        "coverage": "Couverture magasins / régions",
-        "updates": "Actualisation des données"
-      }
-    },
-    "q4": {
-      "label": "Autres suggestions ?",
-      "placeholder": "Écrivez ici (max 2000 caractères)"
-    },
+    "intro": "Merci pour le temps accordé : vos réponses nous aident à améliorer YourMelier.",
     "submit": "Envoyer",
+    "submitQuestionnaire": "Envoyer le questionnaire →",
     "submitting": "Envoi en cours…",
     "success": "Merci ! Votre questionnaire a été envoyé.",
     "error": "Envoi impossible. Réessayez plus tard.",
     "validation": {
-      "useful": "Veuillez sélectionner une réponse.",
-      "usage": "Sélectionnez comment vous préféreriez utiliser l’application.",
-      "other": "Suggestion trop longue."
+      "required": "Ce champ est obligatoire.",
+      "other_detail": "Précisez le texte pour « Autre ».",
+      "text_long": "Texte trop long (max 2000 caractères)."
+    },
+    "v2": {
+      "onboarding": {
+        "title": "Première impression & onboarding",
+        "q_scope": {
+          "label": "Dans quelle mesure l’objectif de l’app était-il clair à la première utilisation ?",
+          "l1": "Pas du tout clair",
+          "l5": "Très clair"
+        },
+        "q_ease": {
+          "label": "Dans quelle mesure a-t-il été facile de commencer à utiliser l’app sans instructions ?",
+          "l1": "Très difficile",
+          "l5": "Très facile"
+        },
+        "q_first": {
+          "label": "Quelle a été votre première impression de l’app ?",
+          "placeholder": "Réponse libre (max 2000 caractères)"
+        }
+      },
+      "ym": {
+        "title": "Suggestions YourMelier",
+        "q_relevance": {
+          "label": "Dans quelle mesure les vins suggérés vous ont-ils semblé pertinents par rapport au plat saisi ?",
+          "l1": "Pas du tout pertinents",
+          "l5": "Très pertinents"
+        },
+        "q_reason": {
+          "label": "La raison pour laquelle le vin vous a été suggéré vous a-t-elle été utile ?",
+          "yes": "Oui, c’était utile",
+          "partially": "Partiellement seulement",
+          "no": "Non, ce n’était pas utile"
+        },
+        "q_improve": {
+          "label": "Qu’est-ce qui améliorerait, selon vous, la qualité des suggestions ?",
+          "placeholder": "Réponse libre (max 2000 caractères)"
+        }
+      },
+      "ux": {
+        "title": "Utilisabilité & expérience utilisateur",
+        "q_nav": {
+          "label": "Dans quelle mesure la navigation entre les écrans est-elle fluide ?",
+          "l1": "Très peu fluide",
+          "l5": "Très fluide"
+        },
+        "q_least": {
+          "label": "Quelle partie de l’app vous a semblé la moins intuitive ?",
+          "dish": "Saisie du plat",
+          "filter": "Filtrage des résultats",
+          "wine_sheet": "Fiche du vin",
+          "purchase_link": "Lien d’achat",
+          "other": "Autre"
+        },
+        "q_least_other_ph": "Précisez…",
+        "q_technical": {
+          "label": "Avez-vous rencontré des erreurs techniques ou des ralentissements ?",
+          "placeholder": "Réponse libre (max 2000 caractères)"
+        }
+      },
+      "purchase": {
+        "title": "Expérience d’achat",
+        "q_links": {
+          "label": "Dans quelle mesure trouvez-vous utiles les liens directs vers les marketplaces ?",
+          "l1": "Pas du tout utiles",
+          "l5": "Très utiles"
+        },
+        "q_confidence": {
+          "label": "Vous sentiriez-vous en confiance pour acheter un vin à partir de la suggestion de l’app ?",
+          "yes": "Oui",
+          "no": "Non",
+          "depends": "Cela dépend du prix ou de la rareté du vin"
+        },
+        "q_clicked": {
+          "label": "Avez-vous essayé de cliquer sur un lien d’achat ?",
+          "yes": "Oui",
+          "no": "Non"
+        }
+      },
+      "value": {
+        "title": "Valeur perçue",
+        "q_real": {
+          "label": "Dans quelle mesure cette app pourrait-elle vous être utile dans des situations réelles ?",
+          "l1": "Inutile",
+          "l5": "Très utile"
+        },
+        "q_reuse": {
+          "label": "Quelle est la probabilité que vous réutilisiez l’app à l’avenir ?",
+          "l1": "Très improbable",
+          "l5": "Très probable"
+        },
+        "q_nps": {
+          "label": "De 0 à 10, recommanderiez-vous YourMelier à un ami ?"
+        }
+      },
+      "modality": {
+        "title": "Modalité d’utilisation",
+        "q_platform": {
+          "label": "Cette solution serait-elle plus utile en page web ou en application installée sur le téléphone ?",
+          "web": "Page web",
+          "app": "Application sur le téléphone"
+        },
+        "q_like_most": {
+          "label": "Qu’avez-vous le plus apprécié ?",
+          "placeholder": "Réponse libre (max 2000 caractères)"
+        },
+        "q_like_least": {
+          "label": "Qu’avez-vous le moins apprécié ou qu’est-ce qui vous a gêné ?",
+          "placeholder": "Réponse libre (max 2000 caractères)"
+        },
+        "q_feature": {
+          "label": "Quelle fonctionnalité ajouteriez-vous pour rendre l’app plus complète ?",
+          "placeholder": "Réponse libre (max 2000 caractères)"
+        }
+      }
     }
   },
   "suggestions": {

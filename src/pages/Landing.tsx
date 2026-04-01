@@ -1,70 +1,66 @@
-import { lazy, Suspense } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { AppPreview } from '../components/landing/AppPreview'
+import { BetaHeader } from '../components/landing/BetaHeader'
 import { CookieBanner } from '../components/common/CookieBanner'
-import { Hero } from '../components/landing/Hero'
-import { LanguageSwitcher } from '../components/common/LanguageSwitcher'
+import { QuickSuggestionForm } from '../components/landing/QuickSuggestionForm'
 import { Layout } from '../components/layout/Layout'
 
-const VideoSection = lazy(() =>
-  import('../components/landing/VideoSection').then((m) => ({ default: m.VideoSection })),
-)
-const BetaFormsColumn = lazy(() =>
-  import('../components/landing/BetaFormsColumn').then((m) => ({ default: m.BetaFormsColumn })),
-)
-
 const APP_URL = 'https://app-placeholder.com'
-
-function LazyBlock() {
-  return (
-    <div
-      className="border-b border-fig-border bg-page px-4 py-16 text-center text-sm text-body-muted"
-      aria-busy="true"
-    >
-      …
-    </div>
-  )
-}
 
 export function Landing() {
   const { t } = useTranslation()
 
   return (
     <Layout>
-      <header className="sticky top-0 z-20 border-b border-fig-border/60 bg-page/95 px-4 py-3 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-landing items-center justify-between gap-4">
-          <span className="font-serif text-lg font-semibold tracking-tight text-wine-900 md:text-xl">
-            {t('layout.brand')}
-          </span>
-          <div className="flex flex-wrap items-center justify-end gap-3 sm:gap-5">
-            <a
-              href={APP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden text-sm font-medium text-wine-900 underline-offset-4 hover:underline sm:inline"
-            >
-              {t('cta.open_app')}
-            </a>
-            <LanguageSwitcher />
-          </div>
-        </div>
-      </header>
+      <BetaHeader />
 
       <main className="flex-1">
-        <Hero />
+        <div className="mx-auto max-w-landing px-4 pb-4 pt-6 sm:px-6 sm:pt-8">
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-10 xl:gap-14">
+            <div className="flex flex-1 flex-col items-center lg:items-start">
+              <AppPreview />
+            </div>
 
-        <div className="mx-auto max-w-landing px-6 pb-20">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-            <AppPreview />
-            <Suspense fallback={<LazyBlock />}>
-              <BetaFormsColumn />
-            </Suspense>
+            <div className="flex flex-1 flex-col justify-center gap-6 lg:min-w-0 lg:max-w-xl lg:py-4">
+              <div>
+                <p className="font-serif text-[1.95rem] font-normal leading-tight text-wine-900 sm:text-[2.4375rem]">
+                  {t('landing.betaTitle')}
+                </p>
+                <h1 className="mt-3 font-serif text-2xl font-normal text-wine-900 sm:text-[1.8rem]">
+                  {t('landing.welcome')}
+                </h1>
+                <div className="mt-4 space-y-3 text-base leading-relaxed text-body sm:text-lg">
+                  <p>{t('landing.bodyP1')}</p>
+                  <p>{t('landing.bodyP2')}</p>
+                  <p>{t('landing.bodyP3')}</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:max-w-md">
+                <a
+                  href={APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center rounded-figma bg-wine-900 px-8 py-3 text-center text-base font-normal text-white shadow-card outline-none transition hover:bg-wine-800 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+                >
+                  {t('cta.open_app')}
+                </a>
+                <p className="text-center text-sm leading-relaxed text-body sm:text-left sm:text-base">
+                  {t('landing.surveyHint')}
+                </p>
+                <Link
+                  to="/beta/questionnaire"
+                  className="inline-flex min-h-11 items-center justify-center rounded-figma border-2 border-wine-900 bg-transparent px-8 py-3 text-center text-base font-normal text-wine-900 outline-none transition hover:bg-wine-900/5 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+                >
+                  <span className="whitespace-pre-line text-center leading-snug">{t('cta.survey')}</span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
-        <Suspense fallback={<LazyBlock />}>
-          <VideoSection />
-        </Suspense>
+        <QuickSuggestionForm />
       </main>
 
       <CookieBanner />

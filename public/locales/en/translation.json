@@ -1,81 +1,171 @@
 {
   "layout": {
-    "brand": "YourMellier"
+    "brand": "YourMelier",
+    "languageSwitcher": "Language",
+    "logout": "Log out"
   },
   "preview": {
-    "label": "Web app interface preview"
+    "label": "Web app interface preview",
+    "specs": "(9:16 aspect ratio) · 375px width",
+    "fileName": "demo.mp4"
   },
   "hero": {
-    "title": "Welcome to YourMellier!",
+    "title": "Welcome to YourMelier!",
     "p1": "This is a personal project built to experiment with new tools and technologies—and to create a virtual sommelier.",
     "p2": "Thank you sincerely for taking part: your help is invaluable in testing this experiment. Because this is still a “closed doors” beta, please keep strict confidentiality about everything you see inside.",
     "p3": "Thank you for being part of this experiment!",
     "watch_video": "Watch the video"
   },
   "cta": {
-    "open_app": "🚀 Open web app"
+    "open_app": "🚀 Open web app",
+    "survey": "📋 Fill out\nsurvey"
+  },
+  "landing": {
+    "betaTitle": "🍷 YourMelier Beta",
+    "welcome": "Welcome to YourMelier!",
+    "bodyP1": "This is a personal project built to experiment with new tools and technologies—and to create a virtual sommelier.",
+    "bodyP2": "Thank you sincerely for taking part: your help is invaluable in testing this experiment. Because this is still a “closed doors” beta, please keep strict confidentiality about everything you see inside.",
+    "bodyP3": "Thank you for being part of this experiment!",
+    "surveyHint": "By filling out this short questionnaire after trying the app, you’ll help me improve it in concrete ways. It takes less than 2 minutes—thank you for your time!",
+    "quickSuggestionTitle": "💬 Quick suggestion (optional)",
+    "quickSuggestionSubmit": "Send"
+  },
+  "surveyPage": {
+    "back": "Back to home",
+    "pageTitle": "YourMelier Beta survey",
+    "intro": "This survey is anonymous so you can be completely honest in your ratings. And you can keep telling me how much you enjoyed this experiment 😄",
+    "progressLabel": "Progress",
+    "progressAria": "{{answered}} of {{total}} questions answered ({{percent}}%)"
   },
   "video": {
-    "title": "Video tutorial"
+    "title": "Video tutorial",
+    "sectionTitle": "📱 Video"
   },
   "survey": {
     "title": "Survey",
-    "intro": "Please answer the following questions.",
-    "q1": {
-      "label": "Would this app be useful to you?",
-      "yes": "Yes",
-      "no": "No"
-    },
-    "q2": {
-      "label": "How would you prefer to use it?",
-      "placeholder": "Select an option",
-      "web": "Web",
-      "mobile": "Mobile",
-      "both": "Both",
-      "none": "None"
-    },
-    "q3": {
-      "ui": {
-        "legend": "User interface",
-        "navigation": "Navigation and menus",
-        "visual_hierarchy": "Visual hierarchy of information",
-        "typography": "Typography and readability",
-        "colors": "Colors and contrast"
-      },
-      "ux": {
-        "legend": "User experience",
-        "speed": "Speed and responsiveness",
-        "clarity": "Clarity of flows",
-        "onboarding": "Onboarding and guidance",
-        "search": "Search and filters"
-      },
-      "func": {
-        "legend": "Features",
-        "comparison": "Price comparison",
-        "filters": "Advanced filters",
-        "alerts": "Alerts and notifications",
-        "history": "History and favorites"
-      },
-      "data": {
-        "legend": "Data quality",
-        "prices": "Price completeness",
-        "accuracy": "Information accuracy",
-        "coverage": "Store / region coverage",
-        "updates": "Data freshness"
-      }
-    },
-    "q4": {
-      "label": "Any other suggestions?",
-      "placeholder": "Write here (max 2000 characters)"
-    },
+    "intro": "Thanks for your time — your answers help us improve YourMelier.",
     "submit": "Submit",
+    "submitQuestionnaire": "Submit survey →",
     "submitting": "Sending…",
     "success": "Thank you! Your survey was submitted.",
     "error": "Could not submit. Please try again later.",
     "validation": {
-      "useful": "Please select an answer.",
-      "usage": "Please select how you would prefer to use the app.",
-      "other": "Suggestion is too long."
+      "required": "This field is required.",
+      "other_detail": "Please specify your “Other” choice.",
+      "text_long": "Text is too long (max 2000 characters)."
+    },
+    "v2": {
+      "onboarding": {
+        "title": "First impression & onboarding",
+        "q_scope": {
+          "label": "How clear was the app’s purpose on first use?",
+          "l1": "Not clear at all",
+          "l5": "Very clear"
+        },
+        "q_ease": {
+          "label": "How easy was it to start using the app without instructions?",
+          "l1": "Very difficult",
+          "l5": "Very easy"
+        },
+        "q_first": {
+          "label": "What was your first impression of the app?",
+          "placeholder": "Open answer (max 2000 characters)"
+        }
+      },
+      "ym": {
+        "title": "YourMelier suggestions",
+        "q_relevance": {
+          "label": "How relevant were the suggested wines compared to the dish you entered?",
+          "l1": "Not relevant at all",
+          "l5": "Very relevant"
+        },
+        "q_reason": {
+          "label": "Was the reason the wine was suggested useful to you?",
+          "yes": "Yes, it was useful",
+          "partially": "Only partially",
+          "no": "No, it wasn’t useful"
+        },
+        "q_improve": {
+          "label": "What would improve the quality of the suggestions, in your view?",
+          "placeholder": "Open answer (max 2000 characters)"
+        }
+      },
+      "ux": {
+        "title": "Usability & user experience",
+        "q_nav": {
+          "label": "How smooth is navigation between screens?",
+          "l1": "Very clunky",
+          "l5": "Very smooth"
+        },
+        "q_least": {
+          "label": "Which part of the app felt least intuitive?",
+          "dish": "Entering the dish",
+          "filter": "Filtering results",
+          "wine_sheet": "Wine detail page",
+          "purchase_link": "Purchase link",
+          "other": "Other"
+        },
+        "q_least_other_ph": "Please specify…",
+        "q_technical": {
+          "label": "Did you notice technical issues or slowdowns while using the app?",
+          "placeholder": "Open answer (max 2000 characters)"
+        }
+      },
+      "purchase": {
+        "title": "Purchase experience",
+        "q_links": {
+          "label": "How useful do you find direct links to marketplaces?",
+          "l1": "Not useful at all",
+          "l5": "Very useful"
+        },
+        "q_confidence": {
+          "label": "Would you feel confident buying a wine based on the app’s suggestion?",
+          "yes": "Yes",
+          "no": "No",
+          "depends": "It depends on price or how rare the wine is"
+        },
+        "q_clicked": {
+          "label": "Did you try clicking a purchase link?",
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "value": {
+        "title": "Perceived value",
+        "q_real": {
+          "label": "How useful do you think this app could be in real situations?",
+          "l1": "Not useful",
+          "l5": "Very useful"
+        },
+        "q_reuse": {
+          "label": "How likely are you to use the app again in the future?",
+          "l1": "Very unlikely",
+          "l5": "Very likely"
+        },
+        "q_nps": {
+          "label": "From 0 to 10, how likely are you to recommend YourMelier to a friend?"
+        }
+      },
+      "modality": {
+        "title": "How you’d use it",
+        "q_platform": {
+          "label": "Would this solution be more useful as a web page or as an app on your phone?",
+          "web": "Web page",
+          "app": "App on the phone"
+        },
+        "q_like_most": {
+          "label": "What did you like most?",
+          "placeholder": "Open answer (max 2000 characters)"
+        },
+        "q_like_least": {
+          "label": "What did you like least or what bothered you?",
+          "placeholder": "Open answer (max 2000 characters)"
+        },
+        "q_feature": {
+          "label": "What feature would you add to make the app more complete?",
+          "placeholder": "Open answer (max 2000 characters)"
+        }
+      }
     }
   },
   "suggestions": {

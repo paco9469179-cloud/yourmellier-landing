@@ -28,7 +28,7 @@ export function CookieBanner() {
 
   return (
     <div
-      className="sticky bottom-0 z-30 border-t border-white/10 bg-neutral-800 px-4 py-3 text-white shadow-lg sm:px-6"
+      className="fixed bottom-0 left-0 right-0 z-30 border-t border-white/10 bg-neutral-800 px-4 py-3 text-white shadow-lg sm:px-6"
       role="region"
       aria-label={t('cookies.message')}
     >

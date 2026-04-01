@@ -1,4 +1,4 @@
-/** Stable keys sent to Edge Function `submit-survey` (aligned with i18n survey.q3.*). */
+/** Chiavi legacy questionario v1 (non più usate da `submit-survey`; solo v2). */
 export const SURVEY_UI_KEYS = [
   'navigation',
   'visual_hierarchy',
