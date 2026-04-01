@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const APP_URL = 'https://app-placeholder.com'
+import { APP_WEB_URL } from '../../config/app'
 
 function scrollToPhonePreview(e: MouseEvent<HTMLAnchorElement>) {
   e.preventDefault()
@@ -59,7 +59,7 @@ export function Hero() {
             {t('hero.watch_video')}
           </a>
           <a
-            href={APP_URL}
+            href={APP_WEB_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-center text-xs font-medium text-wine-900 underline-offset-4 hover:underline sm:hidden sm:text-sm"

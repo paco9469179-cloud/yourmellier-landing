@@ -5,8 +5,7 @@ import { BetaHeader } from '../components/landing/BetaHeader'
 import { CookieBanner } from '../components/common/CookieBanner'
 import { QuickSuggestionForm } from '../components/landing/QuickSuggestionForm'
 import { Layout } from '../components/layout/Layout'
-
-const APP_URL = 'https://app-placeholder.com'
+import { APP_WEB_URL } from '../config/app'
 
 export function Landing() {
   const { t } = useTranslation()
@@ -42,7 +41,7 @@ export function Landing() {
 
             <div className="order-3 flex flex-col gap-3 sm:max-w-md lg:order-none lg:col-start-2 lg:row-start-2 lg:max-w-xl">
               <a
-                href={APP_URL}
+                href={APP_WEB_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-11 items-center justify-center rounded-figma bg-wine-900 px-8 py-3 text-center text-base font-normal text-white shadow-card outline-none transition hover:bg-wine-800 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
