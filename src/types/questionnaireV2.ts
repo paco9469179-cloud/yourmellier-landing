@@ -24,8 +24,18 @@ export type QuestionnaireV2Answers = {
   modality_feature_request: string
 }
 
+/** Metadati opzionali inviati alla Edge Function `submit-survey` (mapping DB lato server). */
+export type QuestionnaireV2Metadata = {
+  user_agent?: string
+  referrer?: string
+  session_id?: string
+}
+
 export type QuestionnaireV2Payload = {
   version: 2
   answers: QuestionnaireV2Answers
   locale: string
+  /** Invio completo (non bozza). */
+  is_draft?: boolean
+  metadata?: QuestionnaireV2Metadata
 }

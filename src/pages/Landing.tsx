@@ -17,45 +17,47 @@ export function Landing() {
 
       <main className="flex-1">
         <div className="mx-auto max-w-landing px-4 pb-4 pt-6 sm:px-6 sm:pt-8">
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-10 xl:gap-14">
-            <div className="flex flex-1 flex-col items-center lg:items-start">
+          {/*
+            Mobile: order = titolo/testo → video → CTA questionario.
+            lg+: griglia a 2 colonne = video a sinistra, titolo+CTA a destra (come prima).
+          */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-10 lg:py-4 xl:gap-14">
+            <div className="order-1 min-w-0 lg:order-none lg:col-start-2 lg:row-start-1 lg:max-w-xl">
+              <p className="font-serif text-[1.95rem] font-normal leading-tight text-wine-900 sm:text-[2.4375rem]">
+                {t('landing.betaTitle')}
+              </p>
+              <h1 className="mt-3 font-serif text-2xl font-normal text-wine-900 sm:text-[1.8rem]">
+                {t('landing.welcome')}
+              </h1>
+              <div className="mt-4 space-y-3 text-base leading-relaxed text-body sm:text-lg">
+                <p>{t('landing.bodyP1')}</p>
+                <p>{t('landing.bodyP2')}</p>
+                <p>{t('landing.bodyP3')}</p>
+              </div>
+            </div>
+
+            <div className="order-2 flex flex-col items-center lg:order-none lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:items-start">
               <AppPreview />
             </div>
 
-            <div className="flex flex-1 flex-col justify-center gap-6 lg:min-w-0 lg:max-w-xl lg:py-4">
-              <div>
-                <p className="font-serif text-[1.95rem] font-normal leading-tight text-wine-900 sm:text-[2.4375rem]">
-                  {t('landing.betaTitle')}
-                </p>
-                <h1 className="mt-3 font-serif text-2xl font-normal text-wine-900 sm:text-[1.8rem]">
-                  {t('landing.welcome')}
-                </h1>
-                <div className="mt-4 space-y-3 text-base leading-relaxed text-body sm:text-lg">
-                  <p>{t('landing.bodyP1')}</p>
-                  <p>{t('landing.bodyP2')}</p>
-                  <p>{t('landing.bodyP3')}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:max-w-md">
-                <a
-                  href={APP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center justify-center rounded-figma bg-wine-900 px-8 py-3 text-center text-base font-normal text-white shadow-card outline-none transition hover:bg-wine-800 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
-                >
-                  {t('cta.open_app')}
-                </a>
-                <p className="text-center text-sm leading-relaxed text-body sm:text-left sm:text-base">
-                  {t('landing.surveyHint')}
-                </p>
-                <Link
-                  to="/beta/questionnaire"
-                  className="inline-flex min-h-11 items-center justify-center rounded-figma border-2 border-wine-900 bg-transparent px-8 py-3 text-center text-base font-normal text-wine-900 outline-none transition hover:bg-wine-900/5 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
-                >
-                  <span className="whitespace-pre-line text-center leading-snug">{t('cta.survey')}</span>
-                </Link>
-              </div>
+            <div className="order-3 flex flex-col gap-3 sm:max-w-md lg:order-none lg:col-start-2 lg:row-start-2 lg:max-w-xl">
+              <a
+                href={APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center justify-center rounded-figma bg-wine-900 px-8 py-3 text-center text-base font-normal text-white shadow-card outline-none transition hover:bg-wine-800 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+              >
+                {t('cta.open_app')}
+              </a>
+              <p className="whitespace-pre-line text-center text-sm leading-relaxed text-body sm:text-left sm:text-base">
+                {t('landing.surveyHint')}
+              </p>
+              <Link
+                to="/beta/questionnaire"
+                className="inline-flex min-h-11 items-center justify-center rounded-figma border-2 border-wine-900 bg-transparent px-8 py-3 text-center text-base font-normal text-wine-900 outline-none transition hover:bg-wine-900/5 focus-visible:ring-2 focus-visible:ring-wine-900 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+              >
+                <span className="whitespace-pre-line text-center leading-snug">{t('cta.survey')}</span>
+              </Link>
             </div>
           </div>
         </div>

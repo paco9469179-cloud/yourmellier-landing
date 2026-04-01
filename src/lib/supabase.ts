@@ -18,3 +18,16 @@ export function getSupabase(): SupabaseClient {
   }
   return client
 }
+
+/** Messaggio errore da `functions.invoke` (body JSON o messaggio SDK). */
+export function getFunctionInvokeErrorMessage(data: unknown, error: unknown): string | null {
+  if (data && typeof data === 'object' && data !== null && 'error' in data) {
+    const e = (data as { error: unknown }).error
+    if (typeof e === 'string' && e.trim()) return e.trim()
+  }
+  if (error && typeof error === 'object' && error !== null && 'message' in error) {
+    const m = (error as { message: unknown }).message
+    if (typeof m === 'string' && m.trim()) return m.trim()
+  }
+  return null
+}

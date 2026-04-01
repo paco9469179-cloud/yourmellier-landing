@@ -26,7 +26,7 @@
     "bodyP1": "This is a personal project built to experiment with new tools and technologies—and to create a virtual sommelier.",
     "bodyP2": "Thank you sincerely for taking part: your help is invaluable in testing this experiment. Because this is still a “closed doors” beta, please keep strict confidentiality about everything you see inside.",
     "bodyP3": "Thank you for being part of this experiment!",
-    "surveyHint": "By filling out this short questionnaire after trying the app, you’ll help me improve it in concrete ways. It takes less than 2 minutes—thank you for your time!",
+    "surveyHint": "By filling out this short questionnaire after trying the app, you’ll help me improve it in concrete ways; it takes less than 2 minutes.\n\nIf you’d rather leave a free-form comment, you can do that right below.\n\nThank you for your time!",
     "quickSuggestionTitle": "💬 Quick suggestion (optional)",
     "quickSuggestionSubmit": "Send"
   },
@@ -52,7 +52,8 @@
     "validation": {
       "required": "This field is required.",
       "other_detail": "Please specify your “Other” choice.",
-      "text_long": "Text is too long (max 2000 characters)."
+      "text_long": "Text is too long (max 2000 characters).",
+      "invalid_payload": "Some data is invalid. Check your answers and try again."
     },
     "v2": {
       "onboarding": {

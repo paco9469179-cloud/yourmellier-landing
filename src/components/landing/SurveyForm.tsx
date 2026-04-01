@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react'
 import { useForm, useWatch } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { getSupabase } from '../../lib/supabase'
+import { getFunctionInvokeErrorMessage, getSupabase } from '../../lib/supabase'
+import { getOrCreateSurveySessionId } from '../../lib/surveySession'
 import { computeQuestionnaireProgress } from '../../lib/questionnaireProgress'
 import { stripHtmlTags } from '../../lib/sanitize'
 import type { Likert1to5, QuestionnaireV2Answers, QuestionnaireV2Payload } from '../../types/questionnaireV2'
@@ -90,6 +91,7 @@ export function SurveyForm({ embedded = false, pageTitleId = 'survey-page-title'
     handleSubmit,
     control,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm<V2FormValues>({ defaultValues: defaultV2 })
 
@@ -116,6 +118,10 @@ export function SurveyForm({ embedded = false, pageTitleId = 'survey-page-title'
     : 'inline-flex cursor-pointer items-center gap-2 rounded-figma border border-fig-border bg-page px-3 py-2 text-base text-body transition hover:border-wine-900/40 has-[:checked]:border-wine-900 has-[:checked]:bg-wine-900 has-[:checked]:text-white'
 
   const onSubmit = async (values: V2FormValues) => {
+    clearErrors('root')
+    const invalidPayload = () =>
+      setError('root', { type: 'manual', message: t('survey.validation.invalid_payload') })
+
     const checkText = (raw: string, field: keyof V2FormValues) => {
       const cleaned = stripHtmlTags(raw)
       if (cleaned.length > 2000) {
@@ -161,26 +167,45 @@ export function SurveyForm({ embedded = false, pageTitleId = 'survey-page-title'
       !value_real_world_usefulness ||
       !value_reuse_likelihood
     ) {
+      invalidPayload()
       return
     }
 
     const ym_reason_useful = values.ym_reason_useful as QuestionnaireV2Answers['ym_reason_useful']
-    if (!['yes', 'partially', 'no'].includes(ym_reason_useful)) return
+    if (!['yes', 'partially', 'no'].includes(ym_reason_useful)) {
+      invalidPayload()
+      return
+    }
 
     const ux_least_intuitive = values.ux_least_intuitive as QuestionnaireV2Answers['ux_least_intuitive']
-    if (!['dish', 'filter', 'wine_sheet', 'purchase_link', 'other'].includes(ux_least_intuitive)) return
+    if (!['dish', 'filter', 'wine_sheet', 'purchase_link', 'other'].includes(ux_least_intuitive)) {
+      invalidPayload()
+      return
+    }
 
     const purchase_confidence = values.purchase_confidence as QuestionnaireV2Answers['purchase_confidence']
-    if (!['yes', 'no', 'depends_price_rarity'].includes(purchase_confidence)) return
+    if (!['yes', 'no', 'depends_price_rarity'].includes(purchase_confidence)) {
+      invalidPayload()
+      return
+    }
 
     const purchase_clicked_link = values.purchase_clicked_link as QuestionnaireV2Answers['purchase_clicked_link']
-    if (!['yes', 'no'].includes(purchase_clicked_link)) return
+    if (!['yes', 'no'].includes(purchase_clicked_link)) {
+      invalidPayload()
+      return
+    }
 
     const modality_web_vs_app = values.modality_web_vs_app as QuestionnaireV2Answers['modality_web_vs_app']
-    if (!['web', 'app'].includes(modality_web_vs_app)) return
+    if (!['web', 'app'].includes(modality_web_vs_app)) {
+      invalidPayload()
+      return
+    }
 
     const value_nps = parseNps(values.value_nps)
-    if (value_nps === null) return
+    if (value_nps === null) {
+      invalidPayload()
+      return
+    }
 
     const answers: QuestionnaireV2Answers = {
       onboarding_scope_clarity,
@@ -210,16 +235,41 @@ export function SurveyForm({ embedded = false, pageTitleId = 'survey-page-title'
       version: 2,
       answers,
       locale: i18n.language.split('-')[0] ?? 'it',
+      is_draft: false,
+      metadata: {
+        session_id: getOrCreateSurveySessionId() || undefined,
+        referrer:
+          typeof document !== 'undefined' && document.referrer
+            ? document.referrer.slice(0, 500)
+            : undefined,
+        user_agent:
+          typeof navigator !== 'undefined' ? navigator.userAgent.slice(0, 500) : undefined,
+      },
     }
 
     setStatus('loading')
     try {
       const supabase = getSupabase()
-      const { error } = await supabase.functions.invoke('submit-survey', { body: payload })
-      if (error) throw error
+      const { data, error } = await supabase.functions.invoke('submit-survey', { body: payload })
+      if (error) {
+        const detail = getFunctionInvokeErrorMessage(data, error)
+        throw new Error(detail ?? error.message)
+      }
+      if (
+        data &&
+        typeof data === 'object' &&
+        'error' in data &&
+        typeof (data as { error?: string }).error === 'string'
+      ) {
+        throw new Error((data as { error: string }).error)
+      }
       setStatus('success')
-    } catch {
+    } catch (e) {
       setStatus('error')
+      const msg = e instanceof Error ? e.message : ''
+      if (msg) {
+        setError('root', { type: 'server', message: msg })
+      }
     }
   }
 
@@ -704,9 +754,9 @@ export function SurveyForm({ embedded = false, pageTitleId = 'survey-page-title'
                 {t('survey.success')}
               </p>
             )}
-            {status === 'error' && (
+            {(errors.root || status === 'error') && (
               <p className="text-sm text-red-700 sm:mr-auto" role="alert">
-                {t('survey.error')}
+                {errors.root?.message ?? t('survey.error')}
               </p>
             )}
             <button

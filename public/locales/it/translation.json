@@ -10,7 +10,7 @@
     "fileName": "demo.mp4"
   },
   "hero": {
-    "title": "Benvenuti su YourMelier!",
+    "title": "Benvenuto su YourMelier!",
     "p1": "Questo è un progetto personale nato per sperimentare nuovi strumenti e tecnologie, con cui ho realizzato un sommelier virtuale.",
     "p2": "Grazie di cuore per la vostra disponibilità: il vostro aiuto è prezioso per mettere alla prova questo esperimento. Trattandosi di una fase di test ancora \"a porte chiuse\", vi chiedo di mantenere la massima riservatezza su tutto ciò che vedrete all'interno.",
     "p3": "Grazie per essere parte di questo gioco!",
@@ -22,11 +22,11 @@
   },
   "landing": {
     "betaTitle": "🍷 YourMelier Beta",
-    "welcome": "Benvenuti su YourMelier!",
+    "welcome": "Benvenuto su YourMelier!",
     "bodyP1": "Questo è un progetto personale nato per sperimentare nuovi strumenti e tecnologie, con cui ho realizzato un sommelier virtuale.",
     "bodyP2": "Grazie di cuore per la tua disponibilità: il tuo aiuto è prezioso per mettere alla prova questo esperimento. Trattandosi di una fase di test ancora \"a porte chiuse\", ti chiedo di mantenere la massima riservatezza su tutto ciò che vedrete all'interno.",
     "bodyP3": "Grazie per essere parte di questo esperimento!",
-    "surveyHint": "Compilando questo breve questionario dopo aver provato la app mi aiuterai a migliorarla concretamente. Richiede meno di 2 minuti—grazie per la tua disponibilità!",
+    "surveyHint": "Compilando questo breve questionario dopo aver provato la app mi aiuterai a migliorarla concretamente; richiede meno di 2 minuti.\n\nSe invece preferisci lasciare un commento libero, puoi farlo proprio qui sotto.\n\nGrazie per la tua disponibilità!",
     "quickSuggestionTitle": "💬 Suggerimento rapido (opzionale)",
     "quickSuggestionSubmit": "Invia"
   },
@@ -52,7 +52,8 @@
     "validation": {
       "required": "Questo campo è obbligatorio.",
       "other_detail": "Specifica il testo per «Altro».",
-      "text_long": "Testo troppo lungo (max 2000 caratteri)."
+      "text_long": "Testo troppo lungo (max 2000 caratteri).",
+      "invalid_payload": "Alcuni dati non sono validi. Controlla le risposte e riprova."
     },
     "v2": {
       "onboarding": {
