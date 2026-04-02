@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { setBetaAuthenticated } from '../../lib/betaAuth'
+import { isBetaAuthenticated, setBetaAuthenticated, touchBetaSession } from '../../lib/betaAuth'
 
 type LoginFormValues = {
   username: string
@@ -15,6 +16,15 @@ async function signInPlaceholder(_values: LoginFormValues): Promise<void> {
 
 export function LoginPage() {
   const navigate = useNavigate()
+
+  /** Se la sessione beta è ancora valida, non mostrare il login: vai alla landing. */
+  useEffect(() => {
+    if (isBetaAuthenticated()) {
+      touchBetaSession()
+      navigate('/beta', { replace: true })
+    }
+  }, [navigate])
+
   const {
     register,
     handleSubmit,
