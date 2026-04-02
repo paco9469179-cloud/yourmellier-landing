@@ -1,45 +1,133 @@
-/** Sessione locale per accesso beta (localStorage). Scade 24h dopo l’ultimo accesso valido; persiste tra chiusura tab/browser. */
+/**
+ * Sessione beta: stesso timestamp salvato su localStorage, sessionStorage e cookie (first-party).
+ * Su Chrome mobile (e link da altre app) un solo canale può non bastare; la logica TTL resta 24h dall’ultimo accesso.
+ */
 
 const LEGACY_AUTH_KEY = 'ym_beta_authenticated'
 const LAST_ACCESS_KEY = 'ym_beta_last_access'
+const COOKIE_NAME = 'ym_beta_last_access'
+/** Il browser può tenere il cookie più a lungo; la scadenza reale è sempre `SESSION_TTL_MS` in JS. */
+const COOKIE_MAX_AGE_SEC = 60 * 60 * 24 * 30
 
 const SESSION_TTL_MS = 24 * 60 * 60 * 1000
 
+function safeLocalGet(key: string): string | null {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+function safeLocalSet(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    /* quota / modalità restrittiva */
+  }
+}
+
+function safeLocalRemove(key: string): void {
+  try {
+    localStorage.removeItem(key)
+  } catch {
+    /* ignore */
+  }
+}
+
+function safeSessionGet(key: string): string | null {
+  try {
+    return sessionStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+function safeSessionSet(key: string, value: string): void {
+  try {
+    sessionStorage.setItem(key, value)
+  } catch {
+    /* ignore */
+  }
+}
+
+function safeSessionRemove(key: string): void {
+  try {
+    sessionStorage.removeItem(key)
+  } catch {
+    /* ignore */
+  }
+}
+
+function setCookieTimestamp(ms: string): void {
+  if (typeof document === 'undefined') return
+  const secure =
+    typeof location !== 'undefined' && location.protocol === 'https:' ? '; Secure' : ''
+  document.cookie = `${COOKIE_NAME}=${encodeURIComponent(ms)}; Max-Age=${COOKIE_MAX_AGE_SEC}; Path=/; SameSite=Lax${secure}`
+}
+
+function getCookieTimestamp(): string | null {
+  if (typeof document === 'undefined') return null
+  const m = document.cookie.match(new RegExp(`(?:^|; )${COOKIE_NAME}=([^;]*)`))
+  return m ? decodeURIComponent(m[1]) : null
+}
+
+function clearCookie(): void {
+  if (typeof document === 'undefined') return
+  document.cookie = `${COOKIE_NAME}=; Max-Age=0; Path=/`
+}
+
+/** Scrive lo stesso timestamp ovunque sia possibile (Chrome mobile incluso). */
+function persistLastAccess(ms: string): void {
+  safeLocalSet(LAST_ACCESS_KEY, ms)
+  safeSessionSet(LAST_ACCESS_KEY, ms)
+  setCookieTimestamp(ms)
+}
+
 function clearBetaSession(): void {
-  localStorage.removeItem(LAST_ACCESS_KEY)
-  localStorage.removeItem(LEGACY_AUTH_KEY)
-  sessionStorage.removeItem(LAST_ACCESS_KEY)
-  sessionStorage.removeItem(LEGACY_AUTH_KEY)
+  safeLocalRemove(LAST_ACCESS_KEY)
+  safeLocalRemove(LEGACY_AUTH_KEY)
+  safeSessionRemove(LAST_ACCESS_KEY)
+  safeSessionRemove(LEGACY_AUTH_KEY)
+  clearCookie()
 }
 
 /** Migrazione da solo flag `true` senza timestamp: tratta come accesso appena avvenuto. */
 function migrateLegacySession(): void {
-  if (localStorage.getItem(LAST_ACCESS_KEY) != null) return
-  if (localStorage.getItem(LEGACY_AUTH_KEY) === 'true') {
-    localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
-    localStorage.removeItem(LEGACY_AUTH_KEY)
+  if (safeLocalGet(LAST_ACCESS_KEY) != null) return
+  if (safeLocalGet(LEGACY_AUTH_KEY) === 'true') {
+    persistLastAccess(String(Date.now()))
+    safeLocalRemove(LEGACY_AUTH_KEY)
   }
 }
 
-/** Copia da sessionStorage (versione precedente) a localStorage se serve. */
+/** Copia da sessionStorage (versione precedente) a persistenza completa se serve. */
 function migrateFromSessionStorage(): void {
-  if (localStorage.getItem(LAST_ACCESS_KEY) != null) return
-  const fromSession = sessionStorage.getItem(LAST_ACCESS_KEY)
+  if (safeLocalGet(LAST_ACCESS_KEY) != null) return
+  const fromSession = safeSessionGet(LAST_ACCESS_KEY)
   if (fromSession != null) {
-    localStorage.setItem(LAST_ACCESS_KEY, fromSession)
-    sessionStorage.removeItem(LAST_ACCESS_KEY)
+    persistLastAccess(fromSession)
+    safeSessionRemove(LAST_ACCESS_KEY)
     return
   }
-  if (sessionStorage.getItem(LEGACY_AUTH_KEY) === 'true') {
-    localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
-    sessionStorage.removeItem(LEGACY_AUTH_KEY)
+  if (safeSessionGet(LEGACY_AUTH_KEY) === 'true') {
+    persistLastAccess(String(Date.now()))
+    safeSessionRemove(LEGACY_AUTH_KEY)
   }
 }
 
 function readLastAccessMs(): number | null {
   migrateFromSessionStorage()
   migrateLegacySession()
-  const raw = localStorage.getItem(LAST_ACCESS_KEY)
+
+  let raw: string | null = safeLocalGet(LAST_ACCESS_KEY)
+  if (raw == null) raw = getCookieTimestamp()
+  if (raw == null) raw = safeSessionGet(LAST_ACCESS_KEY)
+
+  if (raw != null && safeLocalGet(LAST_ACCESS_KEY) == null) {
+    persistLastAccess(raw)
+  }
+
   if (raw == null) return null
   const n = Number(raw)
   return Number.isFinite(n) ? n : null
@@ -64,15 +152,14 @@ export function touchBetaSession(): void {
     clearBetaSession()
     return
   }
-  localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
+  persistLastAccess(String(Date.now()))
 }
 
 export function setBetaAuthenticated(value: boolean): void {
   if (value) {
-    sessionStorage.removeItem(LEGACY_AUTH_KEY)
-    sessionStorage.removeItem(LAST_ACCESS_KEY)
-    localStorage.removeItem(LEGACY_AUTH_KEY)
-    localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
+    safeSessionRemove(LEGACY_AUTH_KEY)
+    safeLocalRemove(LEGACY_AUTH_KEY)
+    persistLastAccess(String(Date.now()))
   } else {
     clearBetaSession()
   }
