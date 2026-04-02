@@ -1,4 +1,4 @@
-/** Sessione locale per accesso beta (sessionStorage). Scade 24h dopo l'ultimo accesso valido. */
+/** Sessione locale per accesso beta (localStorage). Scade 24h dopo l’ultimo accesso valido; persiste tra chiusura tab/browser. */
 
 const LEGACY_AUTH_KEY = 'ym_beta_authenticated'
 const LAST_ACCESS_KEY = 'ym_beta_last_access'
@@ -6,22 +6,40 @@ const LAST_ACCESS_KEY = 'ym_beta_last_access'
 const SESSION_TTL_MS = 24 * 60 * 60 * 1000
 
 function clearBetaSession(): void {
+  localStorage.removeItem(LAST_ACCESS_KEY)
+  localStorage.removeItem(LEGACY_AUTH_KEY)
   sessionStorage.removeItem(LAST_ACCESS_KEY)
   sessionStorage.removeItem(LEGACY_AUTH_KEY)
 }
 
 /** Migrazione da solo flag `true` senza timestamp: tratta come accesso appena avvenuto. */
 function migrateLegacySession(): void {
-  if (sessionStorage.getItem(LAST_ACCESS_KEY) != null) return
+  if (localStorage.getItem(LAST_ACCESS_KEY) != null) return
+  if (localStorage.getItem(LEGACY_AUTH_KEY) === 'true') {
+    localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
+    localStorage.removeItem(LEGACY_AUTH_KEY)
+  }
+}
+
+/** Copia da sessionStorage (versione precedente) a localStorage se serve. */
+function migrateFromSessionStorage(): void {
+  if (localStorage.getItem(LAST_ACCESS_KEY) != null) return
+  const fromSession = sessionStorage.getItem(LAST_ACCESS_KEY)
+  if (fromSession != null) {
+    localStorage.setItem(LAST_ACCESS_KEY, fromSession)
+    sessionStorage.removeItem(LAST_ACCESS_KEY)
+    return
+  }
   if (sessionStorage.getItem(LEGACY_AUTH_KEY) === 'true') {
-    sessionStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
+    localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
     sessionStorage.removeItem(LEGACY_AUTH_KEY)
   }
 }
 
 function readLastAccessMs(): number | null {
+  migrateFromSessionStorage()
   migrateLegacySession()
-  const raw = sessionStorage.getItem(LAST_ACCESS_KEY)
+  const raw = localStorage.getItem(LAST_ACCESS_KEY)
   if (raw == null) return null
   const n = Number(raw)
   return Number.isFinite(n) ? n : null
@@ -46,13 +64,15 @@ export function touchBetaSession(): void {
     clearBetaSession()
     return
   }
-  sessionStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
+  localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
 }
 
 export function setBetaAuthenticated(value: boolean): void {
   if (value) {
     sessionStorage.removeItem(LEGACY_AUTH_KEY)
-    sessionStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
+    sessionStorage.removeItem(LAST_ACCESS_KEY)
+    localStorage.removeItem(LEGACY_AUTH_KEY)
+    localStorage.setItem(LAST_ACCESS_KEY, String(Date.now()))
   } else {
     clearBetaSession()
   }

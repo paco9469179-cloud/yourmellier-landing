@@ -20,18 +20,18 @@ export function Landing() {
             Mobile: order = titolo/testo → video → CTA questionario.
             lg+: griglia a 2 colonne = video a sinistra, titolo+CTA a destra (come prima).
           */}
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-10 lg:py-4 xl:gap-14">
+          <div className="grid grid-cols-1 gap-x-10 gap-y-6 lg:grid-cols-2 lg:items-start lg:gap-x-10 lg:gap-y-5 lg:py-4 xl:gap-x-14">
             <div className="order-1 min-w-0 lg:order-none lg:col-start-2 lg:row-start-1 lg:max-w-xl">
-              <p className="font-serif text-[1.95rem] font-normal leading-tight text-wine-900 sm:text-[2.4375rem]">
+              <p className="font-serif text-[32px] font-normal leading-tight text-wine-900 sm:text-[40px]">
                 {t('landing.betaTitle')}
               </p>
-              <h1 className="mt-3 font-serif text-2xl font-normal text-wine-900 sm:text-[1.8rem]">
+              <h1 className="mt-3 font-serif text-[25px] font-normal text-wine-900 sm:text-[30px]">
                 {t('landing.welcome')}
               </h1>
               <div className="mt-4 space-y-3 leading-relaxed text-body">
-                <p className="text-[16px]">{t('landing.bodyP1')}</p>
-                <p className="text-[14px]">{t('landing.bodyP2')}</p>
-                <p className="text-[14px]">{t('landing.bodyP3')}</p>
+                <p className="text-[17px]">{t('landing.bodyP1')}</p>
+                <p className="text-[15px]">{t('landing.bodyP2')}</p>
+                <p className="text-[15px]">{t('landing.bodyP3')}</p>
               </div>
             </div>
 
@@ -39,7 +39,7 @@ export function Landing() {
               <AppPreview />
             </div>
 
-            <div className="order-3 flex flex-col gap-3 sm:max-w-md lg:order-none lg:col-start-2 lg:row-start-2 lg:max-w-xl">
+            <div className="order-3 -mt-1 flex flex-col gap-3 sm:max-w-md lg:order-none lg:col-start-2 lg:row-start-2 lg:-mt-3 lg:max-w-xl">
               <a
                 href={APP_WEB_URL}
                 target="_blank"
