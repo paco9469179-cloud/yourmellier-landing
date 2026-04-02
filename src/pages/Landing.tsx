@@ -30,8 +30,8 @@ export function Landing() {
               </h1>
               <div className="mt-4 space-y-3 leading-relaxed text-body">
                 <p className="text-[16px]">{t('landing.bodyP1')}</p>
-                <p className="text-[12px]">{t('landing.bodyP2')}</p>
-                <p className="text-[12px]">{t('landing.bodyP3')}</p>
+                <p className="text-[14px]">{t('landing.bodyP2')}</p>
+                <p className="text-[14px]">{t('landing.bodyP3')}</p>
               </div>
             </div>
 
