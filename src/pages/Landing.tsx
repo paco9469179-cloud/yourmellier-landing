@@ -28,10 +28,10 @@ export function Landing() {
               <h1 className="mt-3 font-serif text-2xl font-normal text-wine-900 sm:text-[1.8rem]">
                 {t('landing.welcome')}
               </h1>
-              <div className="mt-4 space-y-3 text-base leading-relaxed text-body sm:text-lg">
-                <p>{t('landing.bodyP1')}</p>
-                <p>{t('landing.bodyP2')}</p>
-                <p>{t('landing.bodyP3')}</p>
+              <div className="mt-4 space-y-3 leading-relaxed text-body">
+                <p className="text-[16px]">{t('landing.bodyP1')}</p>
+                <p className="text-[12px]">{t('landing.bodyP2')}</p>
+                <p className="text-[12px]">{t('landing.bodyP3')}</p>
               </div>
             </div>
 

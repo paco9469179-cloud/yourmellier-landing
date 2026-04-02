@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-/** Video demo 9:16, larghezza massima 375px (schema landing). */
+/** Video in cornice 9:16 (max 375px); `object-contain` = fit in larghezza (nessun taglio orizzontale). */
 export function AppPreview() {
   const { t } = useTranslation()
 
@@ -22,7 +22,7 @@ export function AppPreview() {
           <div className="overflow-hidden rounded-[1.25rem] bg-black">
             <div className="relative aspect-[9/16] w-full">
               <video
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-contain object-center"
                 controls
                 playsInline
                 preload="metadata"
