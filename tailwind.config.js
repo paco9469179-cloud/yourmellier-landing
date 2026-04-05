@@ -1,6 +1,6 @@
 /**
- * Design tokens from Figma App-Vini, frame node 636:537 (MCP get_design_context).
- * Headings: Newsreader · UI/body: Manrope · Page #F5F1E9 · Primary #6e4f32 · Body #4e3b31 · Surfaces #e4d9ca / inputs #f0ede4 · Borders #d5cfc4 · Bezel #2b1e16
+ * Palette allineata a colors (Expo/RN): testo #2D1B24 / #664D56, primary #4D0D27, accent vinaccia.
+ * Headings: Newsreader · body: Manrope
  */
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -14,22 +14,36 @@ export default {
           muted: '#F3F1EC',
         },
         surface: '#e4d9ca',
+        /** Brand / CTA — colors.primary */
         wine: {
-          900: '#6e4f32',
-          800: '#5d432a',
-          700: '#634832',
-          600: '#7a5a45',
+          900: '#4D0D27',
+          800: '#3A0A1D',
+          700: '#631535',
+          600: '#852B4D',
+        },
+        /** Alias semantici (opzionale in classi: bg-primary, text-primary-muted) */
+        primary: {
+          DEFAULT: '#4D0D27',
+          hover: '#3A0A1D',
+          muted: '#664D56',
         },
         fig: {
           border: '#d5cfc4',
           input: '#f0ede4',
-          body: '#4e3b31',
+          body: '#2D1B24',
           bezel: '#2b1e16',
         },
         footer: '#E5E5E5',
+        /** Text Primary / Text Secondary */
         body: {
-          DEFAULT: '#4e3b31',
-          muted: '#635f5b',
+          DEFAULT: '#2D1B24',
+          muted: '#664D56',
+        },
+        /** Accenti vinaccia (ex rosa-mauve) */
+        accent: {
+          DEFAULT: '#E8CDD6',
+          active: '#CEA0B3',
+          focus: '#852B4D',
         },
       },
       fontFamily: {
